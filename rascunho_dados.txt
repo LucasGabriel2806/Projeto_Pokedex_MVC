@@ -1,0 +1,15 @@
+Pokemon:
+NOME      |      Numero|Lv:  |HP:     |ESTADO |  
+Bulbasauro|         001| 34  | 83/83  | OK    |
+
+Habilidades:
+ATAQUE| DEFESA| VELOCIDADE| ESPECIAL|
+    47|     52|         52|       61|
+
+Descricao
+tipo1| tipo2 | id_no| ot   | 
+GRASS| POISON|53975 | LUCAS| 
+____________________________________
+Poderes:
+poder1     |poder2   |poder3    |poder4      |
+Razor Leaf |cut      |vine whip |sleep powder|
