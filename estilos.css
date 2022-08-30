@@ -1,0 +1,9 @@
+#site { height: 900px; background: #1C1C1C; padding:5px; width:99%; }
+
+#poke_lista { color: blue; font-size: 20px;}
+
+#Disponiveis { text-align: center; font-style: italic; font-size: 40px;}
+
+#tela_esquerda { background: #F0F8FF; width: 35%; height: 850px; float: left; margin-top: 25px; margin-bottom: 10px; }
+
+#tela_direita { background: #F0F8FF; width: 60%; height: 850px; float: right; margin-top: 25px; margin-bottom: 10px; }
