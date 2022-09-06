@@ -1,6 +1,8 @@
 <?php
 
-class PokemonDAO
+// Pokemon -> Inicial
+
+class InicialDAO
 {
 
     private $conexao;
@@ -18,9 +20,9 @@ class PokemonDAO
     }
 
 
-    public function insert(PokemonModel $model)
+    public function insert(InicialModel $model)
     {
-        $sql = "INSERT INTO pokemon
+        $sql = "INSERT INTO inicial
                 (nome, numero, lv, hp, estado)
                 VALUES (?, ?, ?, ?, ?)";
 
@@ -43,9 +45,9 @@ class PokemonDAO
     }
 
 
-    public function update(PokemonModel $model)
+    public function update(InicialModel $model)
     {
-        $sql = "UPDATE pokemon SET nome=?, numero=?, lv=?, hp=?, estado=? WHERE id=? ";
+        $sql = "UPDATE inicial SET nome=?, numero=?, lv=?, hp=?, estado=? WHERE id=? ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $model->nome);
@@ -60,7 +62,7 @@ class PokemonDAO
 
     public function select()
     {
-        $sql = "SELECT * FROM pokemon ";
+        $sql = "SELECT * FROM inicial ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
@@ -71,21 +73,21 @@ class PokemonDAO
 
     public function selectById(int $id)
     {
-        include_once 'Model/PokemonModel.php';
+        include_once 'Model/InicialModel.php';
 
-        $sql = "SELECT * FROM pokemon WHERE id = ?";
+        $sql = "SELECT * FROM inicial WHERE id = ?";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);
         $stmt->execute();
 
-        return $stmt->fetchObject("PokemonModel"); 
+        return $stmt->fetchObject("InicialModel"); 
     }
 
 
     public function delete(int $id)// id é inteiro.
     {
-        $sql = "DELETE FROM pokemon WHERE id = ? ";
+        $sql = "DELETE FROM inicial WHERE id = ? ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);

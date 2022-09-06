@@ -1,6 +1,8 @@
 <?php
 
-class DescricaoDAO
+// Descricao -> Bulbasauro
+
+class BulbasauroDAO
 {
 
     private $conexao;
@@ -18,9 +20,9 @@ class DescricaoDAO
     }
 
 
-    public function insert(DescricaoModel $model)
+    public function insert(BulbasauroModel $model)
     {
-        $sql = "INSERT INTO descricao
+        $sql = "INSERT INTO bulbasauro
                 (tipo1, tipo2, id_no, ot)
                 VALUES (?, ?, ?, ?)";
 
@@ -42,9 +44,9 @@ class DescricaoDAO
     }
 
 
-    public function update(DescricaoModel $model)
+    public function update(BulbasauroModel $model)
     {
-        $sql = "UPDATE descricao SET tipo1=?, tipo2=?, id_no=?, ot=? WHERE id=? ";
+        $sql = "UPDATE bulbasauro SET tipo1=?, tipo2=?, id_no=?, ot=? WHERE id=? ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $model->tipo1);
@@ -58,7 +60,7 @@ class DescricaoDAO
 
     public function select()
     {
-        $sql = "SELECT * FROM descricao ";
+        $sql = "SELECT * FROM bulbasauro ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
@@ -69,21 +71,21 @@ class DescricaoDAO
 
     public function selectById(int $id)
     {
-        include_once 'Model/DescricaoModel.php';
+        include_once 'Model/BulbasauroModel.php';
 
-        $sql = "SELECT * FROM descricao WHERE id = ?";
+        $sql = "SELECT * FROM bulbasauro WHERE id = ?";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);
         $stmt->execute();
 
-        return $stmt->fetchObject("DescricaoModel"); 
+        return $stmt->fetchObject("BulbasauroModel"); 
     }
 
 
     public function delete(int $id)// id é inteiro.
     {
-        $sql = "DELETE FROM descricao WHERE id = ? ";
+        $sql = "DELETE FROM bulbasauro WHERE id = ? ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);

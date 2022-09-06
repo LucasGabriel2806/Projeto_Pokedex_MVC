@@ -1,6 +1,8 @@
 <?php
 
-class PokemonModel
+// Pokemon -> Inicial
+
+class InicialModel
 {
     public $id, $nome, $numero, $lv, $hp, $estado;
 
@@ -8,9 +10,9 @@ class PokemonModel
 
     public function save()
     {
-        include 'DAO/PokemonDAO.php';
+        include 'DAO/InicialDAO.php';
 
-        $dao = new PokemonDAO();
+        $dao = new InicialDAO();
 
         
         // Para saber mais sobre a palavra-chave this, leia: https://pt.stackoverflow.com/questions/575/quando-usar-self-vs-this-em-php
@@ -36,10 +38,10 @@ class PokemonModel
 
     public function getAllRows()
     {
-        include 'DAO/PokemonDAO.php';
+        include 'DAO/InicialDAO.php';
         
         
-        $dao = new PokemonDAO();
+        $dao = new InicialDAO();
 
         
         $this->rows = $dao->select();
@@ -49,14 +51,14 @@ class PokemonModel
     
     public function getById(int $id)
     {
-        include 'DAO/PokemonDAO.php'; 
+        include 'DAO/InicialDAO.php'; 
 
-        $dao = new PokemonDAO();
+        $dao = new InicialDAO();
 
         $obj = $dao->selectById($id);
 
         
-        return ($obj) ? $obj : new PokemonModel();
+        return ($obj) ? $obj : new InicialModel();
 
     }
 
@@ -68,9 +70,9 @@ class PokemonModel
      */
     public function delete(int $id)
     {
-        include 'DAO/PokemonDAO.php'; // Incluíndo o arquivo DAO
+        include 'DAO/InicialDAO.php'; // Incluíndo o arquivo DAO
 
-        $dao = new POkemonDAO();
+        $dao = new InicialDAO();
 
         $dao->delete($id);
     }

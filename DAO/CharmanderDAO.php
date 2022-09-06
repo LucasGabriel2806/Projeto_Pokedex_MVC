@@ -1,6 +1,9 @@
 <?php
 
-class PoderesDAO
+// Habilidades -> Charmander
+
+
+class CharmanderDAO
 {
 
     private $conexao;
@@ -18,20 +21,20 @@ class PoderesDAO
     }
 
 
-    public function insert(PoderesModel $model)
+    public function insert(CharmanderModel $model)
     {
-        $sql = "INSERT INTO poderes
-                (poder1, poder2, poder3, poder4)
+        $sql = "INSERT INTO charmander
+                (ataque, defesa, velocidade, especial)
                 VALUES (?, ?, ?, ?)";
 
 
         $stmt = $this->conexao->prepare($sql);
 
         
-        $stmt->bindValue(1, $model->poder1);
-        $stmt->bindValue(2, $model->poder2);
-        $stmt->bindValue(3, $model->poder3);
-        $stmt->bindValue(4, $model->poder4);
+        $stmt->bindValue(1, $model->ataque);
+        $stmt->bindValue(2, $model->defesa);
+        $stmt->bindValue(3, $model->velocidade);
+        $stmt->bindValue(4, $model->especial);
         
 
         $stmt->execute();
@@ -42,15 +45,15 @@ class PoderesDAO
     }
 
 
-    public function update(PoderesModel $model)
+    public function update(CharmanderModel $model)
     {
-        $sql = "UPDATE poderes SET poder1=?, poder2=?, poder3=?, poder4=? WHERE id=? ";
+        $sql = "UPDATE charmander SET ataque=?, defesa=?, velocidade=?, especial=? WHERE id=? ";
 
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $model->poder1);
-        $stmt->bindValue(2, $model->poder2);
-        $stmt->bindValue(3, $model->poder3);
-        $stmt->bindValue(4, $model->poder4);
+        $stmt->bindValue(1, $model->ataque);
+        $stmt->bindValue(2, $model->defesa);
+        $stmt->bindValue(3, $model->velocidade);
+        $stmt->bindValue(4, $model->especial);
         $stmt->bindValue(5, $model->id);
         $stmt->execute();
     }
@@ -58,7 +61,7 @@ class PoderesDAO
 
     public function select()
     {
-        $sql = "SELECT * FROM poderes ";
+        $sql = "SELECT * FROM charmander ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
@@ -69,21 +72,21 @@ class PoderesDAO
 
     public function selectById(int $id)
     {
-        include_once 'Model/PoderesModel.php';
+        include_once 'Model/CharmanderModel.php';
 
-        $sql = "SELECT * FROM poderes WHERE id = ?";
+        $sql = "SELECT * FROM charmander WHERE id = ?";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);
         $stmt->execute();
 
-        return $stmt->fetchObject("PoderesModel"); 
+        return $stmt->fetchObject("CharmanderModel"); 
     }
 
 
     public function delete(int $id)// id é inteiro.
     {
-        $sql = "DELETE FROM poderes WHERE id = ? ";
+        $sql = "DELETE FROM charmander WHERE id = ? ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);

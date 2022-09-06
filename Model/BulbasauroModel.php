@@ -1,16 +1,19 @@
 <?php
 
-class HabilidadesModel
+// Descricao -> Bulbasauro
+
+
+class BulbasauroModel
 {
-    public $id, $ataque, $defesa, $velocidade, $especial;
+    public $id, $tipo1, $tipo2, $id_no, $ot;
 
     public $rows;
 
     public function save()
     {
-        include 'DAO/HabilidadesDAO.php';
+        include 'DAO/BulbasauroDAO.php';
 
-        $dao = new HabilidadesDAO();
+        $dao = new BulbasauroDAO();
 
         
         // Para saber mais sobre a palavra-chave this, leia: https://pt.stackoverflow.com/questions/575/quando-usar-self-vs-this-em-php
@@ -36,10 +39,10 @@ class HabilidadesModel
 
     public function getAllRows()
     {
-        include 'DAO/HabilidadesDAO.php';
+        include 'DAO/BulbasauroDAO.php';
         
         
-        $dao = new HabilidadesDAO();
+        $dao = new BulbasauroDAO();
 
         
         $this->rows = $dao->select();
@@ -49,14 +52,14 @@ class HabilidadesModel
     
     public function getById(int $id)
     {
-        include 'DAO/HabilidadesDAO.php'; 
+        include 'DAO/BulbasauroDAO.php'; 
 
-        $dao = new HabilidadesDAO();
+        $dao = new BulbasauroDAO();
 
         $obj = $dao->selectById($id);
 
         
-        return ($obj) ? $obj : new HabilidadesModel();
+        return ($obj) ? $obj : new BulbasauroModel();
 
     }
 
@@ -68,9 +71,9 @@ class HabilidadesModel
      */
     public function delete(int $id)
     {
-        include 'DAO/HabilidadesDAO.php'; // Incluíndo o arquivo DAO
+        include 'DAO/BulbasauroDAO.php'; // Incluíndo o arquivo DAO
 
-        $dao = new HabilidadesDAO();
+        $dao = new BulbasauroDAO();
 
         $dao->delete($id);
     }

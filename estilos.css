@@ -2,8 +2,23 @@
 
 #poke_lista { color: blue; font-size: 20px;}
 
-#Disponiveis { text-align: center; font-style: italic; font-size: 40px;}
+#Bem_vindo { text-align: center; font-style: italic; font-size: 40px;}
+
+#texto {  font-size: 25px;}
 
 #tela_esquerda { background: #F0F8FF; width: 35%; height: 850px; float: left; margin-top: 25px; margin-bottom: 10px; }
 
-#tela_direita { background: #F0F8FF; width: 60%; height: 850px; float: right; margin-top: 25px; margin-bottom: 10px; }
+#tela_direita { background: #F0F8FF; background-image: url("Img/pokedex.png"); background-position: center;
+    background-repeat: no-repeat; background-size: cover; width: 60%; height: 850px; float: right; margin-top: 25px; margin-bottom: 10px; }
+
+#botao_anterior { background-color: #008000; }
+
+#botao_proximo {background-color: #FF0000;}
+
+
+.tela_pokemon { 
+    position: relative;
+    bottom: -230px;
+    left: 92px;
+    border-radius: 5px;
+ }

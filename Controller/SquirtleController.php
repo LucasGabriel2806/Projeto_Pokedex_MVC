@@ -1,5 +1,7 @@
 <?php
 
+// Poderes -> Squirtle
+
 /**
  * Classes Controller são responsáveis por processar as requisições do usuário.
  * Isso significa que toda vez que um usuário chama uma rota, um método (função)
@@ -8,19 +10,19 @@
  * buscar algo no banco de dados), redirecionar o usuário de rota, ou mesmo,
  * chamar outra Controller.
  */
-class PokemonController 
+class SquirtleController 
 {
     /**
      * Os métodos index serão usados para devolver uma View.
      */
     public static function index() 
     {
-        include 'Model/PokemonModel.php';
+        include 'Model/SquirtleModel.php';
 
-        $model = new PokemonModel();
+        $model = new SquirtleModel();
         $model->getAllRows();
 
-        include 'View/modules/Pokemon/ListaPokemon.php';
+        include 'View/modules/Squirtle/ListaSquirtle.php';
     }
 
    /**
@@ -29,8 +31,8 @@ class PokemonController
     public static function form()
     {
 
-        include 'Model/PokemonModel.php'; // inclusão do arquivo model.
-        $model = new PokemonModel();
+        include 'Model/SquirtleModel.php'; // inclusão do arquivo model.
+        $model = new SquirtleModel();
 
         if(isset($_GET['id'])) // Verificando se existe uma variável $_GET
 			// se existir ele vai no banco de dados buscar o acesso a ela
@@ -38,7 +40,7 @@ class PokemonController
 			// Typecast: eu to pegando o que ta vindo da barra do navegador: $_GET['id'] e estou convertendo pra (int) 
             // Para saber mais sobre Typecast, leia: https://tiago.blog.br/type-cast-ou-conversao-de-tipos-do-php-isso-pode-te-ajudar-muito/
 
-        include 'View/modules/Pokemon/FormPokemon.php'; // Include da View. Note que a variável $model está disponível na View.
+        include 'View/modules/Squirtle/FormSquirtle.php'; // Include da View. Note que a variável $model está disponível na View.
     }
 
     /**
@@ -46,21 +48,20 @@ class PokemonController
      */
     public static function save() {
 
-        include 'Model/PokemonModel.php'; // inclusão do arquivo model.
+        include 'Model/SquirtleModel.php'; // inclusão do arquivo model.
 
         // Abaixo cada propriedade do objeto sendo abastecida com os dados informados
         // pelo usuário no formulário (note o envio via POST)
-        $model = new PokemonModel();
-        $model->id = $_POST['id'];
-        $model->nome = $_POST['nome'];
-        $model->numero = $_POST['numero'];
-        $model->lv = $_POST['lv'];
-        $model->hp = $_POST['hp'];
-        $model->estado = $_POST['estado'];
+        $model = new SquirtleModel();
+        $model->id =  $_POST['id'];
+        $model->poder1 = $_POST['poder1'];
+        $model->poder2 = $_POST['poder2'];
+        $model->poder3 = $_POST['poder3'];
+        $model->poder4 = $_POST['poder4'];
 
         $model->save();  // chamando o método save da model.
 
-        header("Location: /pokemon"); // redirecionando o usuário para outra rota.
+        header("Location: /squirtle"); // redirecionando o usuário para outra rota.
     }
 
 
@@ -69,13 +70,13 @@ class PokemonController
      */
     public static function delete()
     {
-        include 'Model/PokemonModel.php'; // inclusão do arquivo model.
+        include 'Model/SquirtleModel.php'; // inclusão do arquivo model.
 
-        $model = new PokemonModel();
+        $model = new SquirtleModel();
 
         $model->delete( (int) $_GET['id'] ); // Enviando a variável $_GET como inteiro para o método delete
 
-        header("Location: /pokemon"); // redirecionando o usuário(localização) para outra rota.
+        header("Location: /squirtle"); // redirecionando o usuário(localização) para outra rota.
     }
 
 

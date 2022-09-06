@@ -1,16 +1,18 @@
 <?php
 
-class DescricaoModel
+// Poderes -> Squirtle
+
+class SquirtleModel
 {
-    public $id, $tipo1, $tipo2, $id_no, $ot;
+    public $id, $poder1, $poder2, $poder3, $poder4;
 
     public $rows;
 
     public function save()
     {
-        include 'DAO/DescricaoDAO.php';
+        include 'DAO/SquirtleDAO.php';
 
-        $dao = new DescricaoDAO();
+        $dao = new SquirtleDAO();
 
         
         // Para saber mais sobre a palavra-chave this, leia: https://pt.stackoverflow.com/questions/575/quando-usar-self-vs-this-em-php
@@ -36,10 +38,10 @@ class DescricaoModel
 
     public function getAllRows()
     {
-        include 'DAO/DescricaoDAO.php';
+        include 'DAO/SquirtleDAO.php';
         
         
-        $dao = new DescricaoDAO();
+        $dao = new SquirtleDAO();
 
         
         $this->rows = $dao->select();
@@ -49,14 +51,14 @@ class DescricaoModel
     
     public function getById(int $id)
     {
-        include 'DAO/DescricaoDAO.php'; 
+        include 'DAO/SquirtleDAO.php'; 
 
-        $dao = new DescricaoDAO();
+        $dao = new SquirtleDAO();
 
         $obj = $dao->selectById($id);
 
         
-        return ($obj) ? $obj : new DescricaoModel();
+        return ($obj) ? $obj : new SquirtleModel();
 
     }
 
@@ -68,9 +70,9 @@ class DescricaoModel
      */
     public function delete(int $id)
     {
-        include 'DAO/DescricaoDAO.php'; // Incluíndo o arquivo DAO
+        include 'DAO/SquirtleDAO.php'; // Incluíndo o arquivo DAO
 
-        $dao = new DescricaoDAO();
+        $dao = new SquirtleDAO();
 
         $dao->delete($id);
     }

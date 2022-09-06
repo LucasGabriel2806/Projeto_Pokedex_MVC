@@ -1,4 +1,6 @@
 <?php
+// Descrição -> Bulbasauro
+
 
 /**
  * Classes Controller são responsáveis por processar as requisições do usuário.
@@ -8,19 +10,19 @@
  * buscar algo no banco de dados), redirecionar o usuário de rota, ou mesmo,
  * chamar outra Controller.
  */
-class DescricaoController 
+class BulbasauroController 
 {
     /**
      * Os métodos index serão usados para devolver uma View.
      */
     public static function index() 
     {
-        include 'Model/DescricaoModel.php';
+        include 'Model/BulbasauroModel.php';
 
-        $model = new DescricaoModel();
+        $model = new BulbasauroModel();
         $model->getAllRows();
 
-        include 'View/modules/Descricao/ListaDescricao.php';
+        include 'View/modules/Bulbasauro/ListaBulbasauro.php';
     }
 
    /**
@@ -29,8 +31,8 @@ class DescricaoController
     public static function form()
     {
 
-        include 'Model/DescricaoModel.php'; // inclusão do arquivo model.
-        $model = new DescricaoModel();
+        include 'Model/BulbasauroModel.php'; // inclusão do arquivo model.
+        $model = new BulbasauroModel();
 
         if(isset($_GET['id'])) // Verificando se existe uma variável $_GET
 			// se existir ele vai no banco de dados buscar o acesso a ela
@@ -38,7 +40,7 @@ class DescricaoController
 			// Typecast: eu to pegando o que ta vindo da barra do navegador: $_GET['id'] e estou convertendo pra (int) 
             // Para saber mais sobre Typecast, leia: https://tiago.blog.br/type-cast-ou-conversao-de-tipos-do-php-isso-pode-te-ajudar-muito/
 
-        include 'View/modules/Descricao/FormDescricao.php'; // Include da View. Note que a variável $model está disponível na View.
+        include 'View/modules/Bulbasauro/FormBulbasauro.php'; // Include da View. Note que a variável $model está disponível na View.
     }
 
     /**
@@ -46,11 +48,11 @@ class DescricaoController
      */
     public static function save() {
 
-        include 'Model/DescricaoModel.php'; // inclusão do arquivo model.
+        include 'Model/BulbasauroModel.php'; // inclusão do arquivo model.
 
         // Abaixo cada propriedade do objeto sendo abastecida com os dados informados
         // pelo usuário no formulário (note o envio via POST)
-        $model = new DescricaoModel();
+        $model = new BulbasauroModel();
         $model->id =  $_POST['id'];
         $model->tipo1 = $_POST['tipo1'];
         $model->tipo2 = $_POST['tipo2'];
@@ -59,7 +61,7 @@ class DescricaoController
 
         $model->save();  // chamando o método save da model.
 
-        header("Location: /descricao"); // redirecionando o usuário para outra rota.
+        header("Location: /bulbasauro"); // redirecionando o usuário para outra rota.
     }
 
 
@@ -68,13 +70,13 @@ class DescricaoController
      */
     public static function delete()
     {
-        include 'Model/DescricaoModel.php'; // inclusão do arquivo model.
+        include 'Model/BulbasauroModel.php'; // inclusão do arquivo model.
 
-        $model = new DescricaoModel();
+        $model = new BulbasauroModel();
 
         $model->delete( (int) $_GET['id'] ); // Enviando a variável $_GET como inteiro para o método delete
 
-        header("Location: /descricao"); // redirecionando o usuário(localização) para outra rota.
+        header("Location: /bulbasauro"); // redirecionando o usuário(localização) para outra rota.
     }
 
 

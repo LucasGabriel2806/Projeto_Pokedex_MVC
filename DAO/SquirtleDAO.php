@@ -1,6 +1,8 @@
 <?php
 
-class HabilidadesDAO
+// Poderes -> Squirtle
+
+class SquirtleDAO
 {
 
     private $conexao;
@@ -18,20 +20,20 @@ class HabilidadesDAO
     }
 
 
-    public function insert(HabilidadesModel $model)
+    public function insert(SquirtleModel $model)
     {
-        $sql = "INSERT INTO habilidades
-                (ataque, defesa, velocidade, especial)
+        $sql = "INSERT INTO squirtle
+                (poder1, poder2, poder3, poder4)
                 VALUES (?, ?, ?, ?)";
 
 
         $stmt = $this->conexao->prepare($sql);
 
         
-        $stmt->bindValue(1, $model->ataque);
-        $stmt->bindValue(2, $model->defesa);
-        $stmt->bindValue(3, $model->velocidade);
-        $stmt->bindValue(4, $model->especial);
+        $stmt->bindValue(1, $model->poder1);
+        $stmt->bindValue(2, $model->poder2);
+        $stmt->bindValue(3, $model->poder3);
+        $stmt->bindValue(4, $model->poder4);
         
 
         $stmt->execute();
@@ -42,15 +44,15 @@ class HabilidadesDAO
     }
 
 
-    public function update(HabilidadesModel $model)
+    public function update(SquirtleModel $model)
     {
-        $sql = "UPDATE habilidades SET ataque=?, defesa=?, velocidade=?, especial=? WHERE id=? ";
+        $sql = "UPDATE squirtle SET poder1=?, poder2=?, poder3=?, poder4=? WHERE id=? ";
 
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $model->ataque);
-        $stmt->bindValue(2, $model->defesa);
-        $stmt->bindValue(3, $model->velocidade);
-        $stmt->bindValue(4, $model->especial);
+        $stmt->bindValue(1, $model->poder1);
+        $stmt->bindValue(2, $model->poder2);
+        $stmt->bindValue(3, $model->poder3);
+        $stmt->bindValue(4, $model->poder4);
         $stmt->bindValue(5, $model->id);
         $stmt->execute();
     }
@@ -58,7 +60,7 @@ class HabilidadesDAO
 
     public function select()
     {
-        $sql = "SELECT * FROM habilidades ";
+        $sql = "SELECT * FROM squirtle ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
@@ -69,21 +71,21 @@ class HabilidadesDAO
 
     public function selectById(int $id)
     {
-        include_once 'Model/HabilidadesModel.php';
+        include_once 'Model/SquirtleModel.php';
 
-        $sql = "SELECT * FROM habilidades WHERE id = ?";
+        $sql = "SELECT * FROM squirtle WHERE id = ?";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);
         $stmt->execute();
 
-        return $stmt->fetchObject("HabilidadesModel"); 
+        return $stmt->fetchObject("SquirtleModel"); 
     }
 
 
     public function delete(int $id)// id é inteiro.
     {
-        $sql = "DELETE FROM habilidades WHERE id = ? ";
+        $sql = "DELETE FROM squirtle WHERE id = ? ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);

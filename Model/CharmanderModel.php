@@ -1,16 +1,18 @@
 <?php
 
-class PoderesModel
+// Habilidades -> Charmander
+
+class CharmanderModel
 {
-    public $id, $poder1, $poder2, $poder3, $poder4;
+    public $id, $ataque, $defesa, $velocidade, $especial;
 
     public $rows;
 
     public function save()
     {
-        include 'DAO/PoderesDAO.php';
+        include 'DAO/CharmanderDAO.php';
 
-        $dao = new PoderesDAO();
+        $dao = new CharmanderDAO();
 
         
         // Para saber mais sobre a palavra-chave this, leia: https://pt.stackoverflow.com/questions/575/quando-usar-self-vs-this-em-php
@@ -36,10 +38,10 @@ class PoderesModel
 
     public function getAllRows()
     {
-        include 'DAO/PoderesDAO.php';
+        include 'DAO/CharmanderDAO.php';
         
         
-        $dao = new PoderesDAO();
+        $dao = new CharmanderDAO();
 
         
         $this->rows = $dao->select();
@@ -49,14 +51,14 @@ class PoderesModel
     
     public function getById(int $id)
     {
-        include 'DAO/PoderesDAO.php'; 
+        include 'DAO/CharmanderDAO.php'; 
 
-        $dao = new PoderesDAO();
+        $dao = new CharmanderDAO();
 
         $obj = $dao->selectById($id);
 
         
-        return ($obj) ? $obj : new PoderesModel();
+        return ($obj) ? $obj : new CharmanderModel();
 
     }
 
@@ -68,9 +70,9 @@ class PoderesModel
      */
     public function delete(int $id)
     {
-        include 'DAO/PoderesDAO.php'; // Incluíndo o arquivo DAO
+        include 'DAO/CharmanderDAO.php'; // Incluíndo o arquivo DAO
 
-        $dao = new PoderesDAO();
+        $dao = new CharmanderDAO();
 
         $dao->delete($id);
     }

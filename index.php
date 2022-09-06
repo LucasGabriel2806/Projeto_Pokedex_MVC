@@ -1,46 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="estilos.css">
-    <title>Pokédex</title>
-</head>
-<body>
-
-
-    <div id="site">
-        <div id="tela_esquerda">
-            <img src="Img/logo_pokemon.png" width="600" height="200"><br>
-                <p id="Disponiveis">Lista de Pokémons disponiveis:</p>
-            
-        
-            <ul id="poke_lista">
-                <li>(1) Bulbasauro</li>
-                <li>(2) Charmander</li>
-                <li>(3) Charmeleon</li>
-                <li>(4) Charizard</li>
-                <li>(5) Squirtle</li>
-                <li>(6) Pikachu</li>
-                <li>(7) Butterfree</li>
-                <li>(8) Pidgeotto</li>
-                <li>(9) Mew</li>
-                <li>(10) Mewtwo</li>
-            </ul>
-
-        </div>
-        <div id="tela_direita">
-            <img src="Img/pokedex.png" width="1100" height="850">
-            
-        </div>
-    </div>
-
-
-
-    
-</body>
-</html>
 
 
 
@@ -48,82 +5,89 @@
 
 $uri_parse = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-include 'Controller/PokemonController.php';
-include 'Controller/HabilidadesController.php';
-include 'Controller/PoderesController.php';
-include 'Controller/DescricaoController.php';
+include 'Controller/InicialController.php';
+include 'Controller/CharmanderController.php';
+include 'Controller/SquirtleController.php';
+include 'Controller/BulbasauroController.php';
 
 
 switch($uri_parse)
 {
+    case '/':
+        InicialController::telaInicial();
+    break;
+
+
     # ROTAS PARA POKEMON
-    case '/pokemon':
-        PokemonController::index();
+    case '/inicial':
+        InicialController::index();
     break;
 
-    case '/pokemon/form':
-        PokemonController::form();
+    case '/inicial/form':
+        InicialController::form();
     break;
 
-    case '/pokemon/save':
-        PokemonController::save();
+    case '/inicial/save':
+        InicialController::save();
     break;
 
-    case '/pokemon/delete':
-        PokemonController::delete();
+    case '/inicial/delete':
+        InicialController::delete();
     break;
 
-    # ROTAS PARA HABILIDADES
-    case '/habilidades':
-        HabilidadesController::index();
+    # ROTAS PARA CHARMANDER
+    
+    case '/charmander':
+        CharmanderController::index();
     break;
 
-    case '/habilidades/form':
-        HabilidadesController::form();
+    case '/charmander/form':
+        CharmanderController::form();
     break;
 
-    case '/habilidades/save':
-        HabilidadesController::save();
+    case '/charmander/save':
+        CharmanderController::save();
     break;
 
-    case '/habilidades/delete':
-        HabilidadesController::delete();
+    case '/charmander/delete':
+        CharmanderController::delete();
 
     break;
-    # ROTAS PARA PODERES
-    case '/poderes':
-        PoderesController::index();
+    
+    # ROTAS PARA SQUIRTLE
+    case '/squirtle':
+        SquirtleController::index();
     break;
 
-    case '/poderes/form':
-        PoderesController::form();
+    case '/squirtle/form':
+        SquirtleController::form();
     break;
 
-    case '/poderes/save':
-        PoderesController::save();
+    case '/squirtle/save':
+        SquirtleController::save();
     break;
 
-    case '/poderes/delete':
-        PoderesController::delete();
+    case '/squirtle/delete':
+        SquirtleController::delete();
     break;
 
-    # ROTAS PARA DESCRICAO
-    case '/descricao':
-        DescricaoController::index();
+    # ROTAS PARA BULBASAURO
+    case '/bulbasauro':
+        BulbasauroController::index();
     break;
 
-    case '/descricao/form':
-        DescricaoController::form();
+    case '/bulbasauro/form':
+        BulbasauroController::form();
     break;
 
-    case '/descricao/save':
-        DescricaoController::save();
+    case '/bulbasauro/save':
+        BulbasauroController::save();
     break;
 
-    case '/descricao/delete':
-        DescricaoController::delete();
+    case '/bulbasauro/delete':
+        BulbasauroController::delete();
     break;
-
+        
 
 
 
